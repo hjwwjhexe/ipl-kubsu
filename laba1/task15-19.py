@@ -21,6 +21,15 @@ def task37(arr):
             indices.append(i)
     return indices, len(indices)
 
+def task49(arr):
+    primes_set = set()
+    for num in arr:
+        if num > 0:
+            for i in range(2, num + 1):
+                if num % i == 0 and is_prime(i):
+                    primes_set.add(i)
+    return sorted(primes_set)
+
 def main():
     arr = list(map(int, input("Введите целые числа через пробел: ").split()))
     
@@ -29,6 +38,7 @@ def main():
     print("13 - Переместить элементы до минимального в конец")
     print("25 - Максимальный элемент в интервале a..b")
     print("37 - Индексы элементов, меньших левого соседа, и их количество")
+    print("49 - Список всех положительных простых делителей элементов списка без повторений")
     choice = input("Введите номер: ")
     
     if choice == "1":
@@ -44,6 +54,9 @@ def main():
         indices, count = task37(arr)
         print("Индексы:", indices)
         print("Количество:", count)
+    elif choice == "49":
+        result = task49(arr)
+        print("Простые делители:", result)
 
 if __name__ == "__main__":
     main()
