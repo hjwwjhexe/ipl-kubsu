@@ -36,6 +36,15 @@ def task7_sort(lines):
     
     return sorted(lines, key=vc_cv_diff)
 
+def task10_sort(lines):
+    def mirror_triple_count(s):
+        count = 0 
+        for i in range(len(s) - 2):
+            if s[i] == s[i+2]:
+                count += 1
+        return count / (len(s)-2) if len(s) > 2 else 0
+    return sorted(lines, key = mirror_triple_count)
+
 def main():
     lines = []
     print("Введите строки (пустая строка для завершения):")
@@ -49,6 +58,7 @@ def main():
     print("1 - Сортировка по разнице согласных и гласных")
     print("4 - Сортировка по отклонению среднего ASCII от первой строки")
     print("7 - Сортировка по разнице VC и CV")
+    print("10 - Сортировка в порядке увеличения среднего количества палиндромных троек")
     choice = input("Введите номер: ")
     
     if choice == "1":
@@ -57,6 +67,8 @@ def main():
         result = task4_sort(lines)
     elif choice == "7":
         result = task7_sort(lines)
+    elif choice == "10":
+        result = task10_sort(lines)
     else:
         print("Неверный выбор")
         return
